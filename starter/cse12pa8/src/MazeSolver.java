@@ -12,9 +12,11 @@ public abstract class MazeSolver {
             }
             Square[] neighbors = getAvailableNeighbors(maze.contents, currentSquare);
             for (Square neighbor : neighbors) {
+                if (neighbor == null) {
+                    break;
+                }
                 int currentCost = currentEntry.key + neighbor.getCost();
                 if (currentCost < neighbor.getRunningCost()) {
-                    neighbor.visit();
                     neighbor.setPrevious(currentSquare);
                     neighbor.setRunningCost(currentCost);
                     pq.add(currentCost, neighbor);
@@ -39,26 +41,32 @@ public abstract class MazeSolver {
         for (int i = 0; i < offsets.length; i++) {
             if (s.getRow() + offsets[i] >= contents.length
                     || s.getCol() >= contents[s.getRow()].length) {
+                continue;
             }
             if (s.getRow() + offsets[i] < 0 || s.getCol() < 0) {
+                continue;
             }
             Square neighbor = contents[s.getRow() + offsets[i]][s.getCol()];
             if (neighbor.getIsWall() || neighbor.isVisited()) {
-                neighbors[index] = neighbor;
-                index++;
+                continue;
             }
+            neighbors[index] = neighbor;
+            index++;
         }
         for (int i = 0; i < offsets.length; i++) {
             if (s.getRow() >= contents.length
                     || s.getCol() + offsets[i] >= contents[s.getRow()].length) {
+                continue;
             }
             if (s.getRow() < 0 || s.getCol() + offsets[i] < 0) {
+                continue;
             }
             Square neighbor = contents[s.getRow()][s.getCol() + offsets[i]];
             if (neighbor.getIsWall() || neighbor.isVisited()) {
-                neighbors[index] = neighbor;
-                index++;
+                continue;
             }
+            neighbors[index] = neighbor;
+            index++;
         }
         return neighbors;
     }

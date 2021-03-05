@@ -38,9 +38,9 @@ public class HeapTest {
         for (int i = 0; i < resultEntries.size(); i++) {
             resultsKeys.add(resultEntries.get(i).key);
         }
-        for (int i = 0; testHeap.right(i+1) < resultsKeys.size(); i++) {
-            if (resultsKeys.get(i) > resultsKeys.get(testHeap.left(i+1))
-                    || resultsKeys.get(i) > resultsKeys.get(testHeap.right(i+1))) {
+        for (int i = 0; testHeap.right(i + 1) < resultsKeys.size(); i++) {
+            if (resultsKeys.get(i) > resultsKeys.get(testHeap.left(i + 1))
+                    || resultsKeys.get(i) > resultsKeys.get(testHeap.right(i + 1))) {
                 assertTrue(false);
             }
             assertTrue(true);
