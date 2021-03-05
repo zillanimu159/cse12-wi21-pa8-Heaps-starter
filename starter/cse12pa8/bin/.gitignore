@@ -1,1 +1,12 @@
+/.DS_Store
+/HeapTest.class
 /IntComparator.class
+/Maze.class
+/MazeSolver.class
+/PriorityQueue.class
+/Square.class
+/TestSolvers.class
+/Heap.class
+/Heap$Entry.class
+/HeapTest$StringComparator.class
+/Entry.class
